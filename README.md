@@ -1,2 +1,2 @@
-# mesr
- Highly secured end-to-end encrypted messenger
+#mesr
+Highly secure end-to-end encrypted messenger
