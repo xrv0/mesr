@@ -3,11 +3,30 @@ package xyz.mesr.backend.packet;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.SimpleChannelInboundHandler;
+import xyz.mesr.backend.log.Logger;
 
-public class PacketHandler extends ChannelInboundHandlerAdapter {
+public class PacketHandler extends SimpleChannelInboundHandler<String> {
+
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, String s) throws Exception {
+     System.out.println(s);
+    }
 
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        Logger.INSTANCE.information("Establishing new channel with id " + ctx.channel().toString());
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        Logger.INSTANCE.information("Disconnecting channel " + ctx.channel().toString() + " because of inactivity!");
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        Logger.INSTANCE.error(cause.getMessage());
+        cause.printStackTrace(System.err);
     }
 }
