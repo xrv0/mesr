@@ -13,6 +13,7 @@ public class Password {
      * Constructor for creating a password at sign up or password change
      * @param plainText
      */
+
     public Password(String plainText) {
         var salt = BCrypt.gensalt(12); // Generate salt
         this.hash = BCrypt.hashpw(plainText, salt);
