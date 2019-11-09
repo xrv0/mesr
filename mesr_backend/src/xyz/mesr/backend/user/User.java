@@ -1,6 +1,7 @@
 package xyz.mesr.backend.user;
 
 import xyz.mesr.backend.key.KeypairEncrypted;
+import xyz.mesr.backend.log.Logger;
 
 /**
  * Class for representing a user
@@ -31,7 +32,7 @@ public class User {
         }else {
             System.err.println("The encrypted key pair is not yet loaded!" +
                     "Requesting from sql database...");
-            // Request keypair from database
+            Logger.INSTANCE.error("SQL not yet implemented");
         }
         return null;
     }

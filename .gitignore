@@ -4,3 +4,6 @@
 *.xml
 *.iml
 mesr_backend/.idea/workspace.xml
+*.ipr
+*.iws
+*.kotlin_module
