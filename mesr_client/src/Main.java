@@ -7,5 +7,13 @@ public class Main {
         Keypair keypair = new Keypair();
         packetSender = new PacketSender();
         packetSender.run();
+
+            packetSender.sendMessage("Count ");
+            try {
+                packetSender.getChannel().disconnect().sync();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
-}
+

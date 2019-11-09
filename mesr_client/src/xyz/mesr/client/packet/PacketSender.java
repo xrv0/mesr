@@ -15,41 +15,40 @@ public class PacketSender extends Thread{
 
     private final int port = 4455;
     private  String host = "127.0.0.1";
-
+    private ChannelFuture lastWriteFuture = null;
+    private Channel ch;
+    private EventLoopGroup group;
+    private  Bootstrap bootstrap;
     public PacketSender(){
 
     }
 
     @Override
     public void run() {
-        EventLoopGroup group = new NioEventLoopGroup();
+
+        group = new NioEventLoopGroup();
+        bootstrap = new Bootstrap();
+        bootstrap.group(group)
+                .channel(NioSocketChannel.class)
+                .handler(new PacketChannelConnector());
+
+
         try {
-            Bootstrap b = new Bootstrap();
-            b.group(group)
-                    .channel(NioSocketChannel.class)
-                    .handler(new PacketChannelConnector());
-
-            // Start the connection attempt.
-            Channel ch;
-            ch = b.connect(host, port).sync().channel();
-
-            // Read commands from the stdin.
-            ChannelFuture lastWriteFuture = null;
-            Scanner sc = new Scanner(System.in);
-            while (this.isAlive()) {
-                if(sc.hasNext()){
-                    String line = sc.nextLine();
-                    lastWriteFuture = ch.writeAndFlush(line + "\r\n");
-                }
-
-            }
-            if (lastWriteFuture != null) {
-                lastWriteFuture.sync();
-            }
+            ch = bootstrap.connect(host, port).sync().channel();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } finally {
-            group.shutdownGracefully();
+            System.exit(0);
         }
+
+
+        while(this.isAlive()){
+
+        }
+    }
+    public void sendMessage(String message){
+        lastWriteFuture = ch.writeAndFlush(message);
+    }
+    public Channel getChannel(){
+        return ch;
     }
 }
