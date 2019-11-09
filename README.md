@@ -1,2 +1,2 @@
-#mesr
-Highly secure end-to-end encrypted messenger
+# mesr
+## First ever open source decentralized end-to-end encrypted instant messenger
