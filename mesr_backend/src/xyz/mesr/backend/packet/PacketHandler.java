@@ -19,10 +19,6 @@ public class PacketHandler extends SimpleChannelInboundHandler<String> {
         Logger.INSTANCE.information("Establishing new channel with id " + ctx.channel().toString());
     }
 
-    @Override
-    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        Logger.INSTANCE.information("Disconnecting channel " + ctx.channel().toString() + " because of inactivity!");
-    }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
