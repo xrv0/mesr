@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9a968b47-b984-438e-866a-b8196acc8f98" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/mesr.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/conf/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/org_mindrot_jbcrypt_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+    <list default="true" id="81c94407-90c9-4ada-94ad-656c3d6eaa56" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/packet/PacketChannelInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/packet/PacketHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/packet/logging/PacketLoggingHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesr_client/src/xyz/mesr/client/packet/PacketChannelConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesr_client/src/xyz/mesr/client/packet/PacketHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mesr_client/src/xyz/mesr/client/packet/PacketSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mesr_backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mesr_backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mesr_backend.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/xyz/mesr/backend/BackendServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/BackendServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/xyz/mesr/backend/conf/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/conf/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/xyz/mesr/backend/user/Password.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/user/Password.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mesr_client/mesr_client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../mesr_client/mesr_client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mesr_client/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mesr_client/src/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,17 +24,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1TOBjKJ75ODIXkzx2W0fzJuwxsV" />
+  <component name="ProjectId" id="1TOHqeYji86g1C5I4jGuYmzglQ0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -49,26 +46,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Backend" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="mesr_backend" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9a968b47-b984-438e-866a-b8196acc8f98" name="Default Changelist" comment="" />
-      <created>1573321395054</created>
+      <changelist id="81c94407-90c9-4ada-94ad-656c3d6eaa56" name="Default Changelist" comment="" />
+      <created>1573324413579</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1573321395054</updated>
-      <workItem from="1573321396585" duration="110000" />
+      <updated>1573324413579</updated>
+      <workItem from="1573324414812" duration="11000" />
     </task>
     <servers />
   </component>
