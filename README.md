@@ -9,7 +9,7 @@
   </a>
 </p>
 
-> Open source decentralized end-to-end encrypted instant messenger
+> An open source decentralized end-to-end encrypted instant messenger
 
 ### 🏠 [Homepage](mesr.tech)
 
