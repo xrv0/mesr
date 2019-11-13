@@ -1,2 +1,2 @@
-- use Secure Password Protocoll
-- add HaveIBeenPwned Password checker
+- [] Implement Secure Password Protocoll
+- [] Add HaveIBeenPwned Password checker
