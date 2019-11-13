@@ -1,2 +1,2 @@
-- [] Implement Secure Password Protocoll
-- [] Add HaveIBeenPwned Password checker
+- [ ] Implement Secure Remote Password protocol
+- [ ] Add HaveIBeenPwned password checker
