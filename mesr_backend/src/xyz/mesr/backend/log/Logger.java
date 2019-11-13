@@ -1,7 +1,6 @@
 package xyz.mesr.backend.log;
 
-import xyz.mesr.StringUtilties;
-
+import xyz.mesr.utilties.StringUtilties;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,18 +14,40 @@ public class Logger {
     /**
      * Default Logger instance
      */
-    public static final Logger INSTANCE = new Logger();
+    public static final Logger INSTANCE = new Logger(true);
 
     private static final String WARNING_PREFIX = "[Warning] ";
     private static final String ERROR_PREFIX = "[Warning] ";
     private static final String INFORMATION_PREFIX = "[Warning] ";
+    private static final String DEBUG_PREFIX = "[Debug] ";
 
+    private final boolean debug; // Should debug messages be printed
     private ArrayList<String> messages;
 
-    public Logger() {
+    /**
+     * @param debug When set to TRUE debug messages are printed to the console
+     */
+    public Logger(boolean debug) {
         this.messages = new ArrayList<>();
+        this.debug = debug;
     }
 
+    public Logger() {
+        this(false);
+    }
+
+    /**
+     * Prints out an optional debug message IF debug mode is enabled
+     * @param message Provides more information
+     * @return the printed message
+     */
+    public String debug(String message) {
+        if(!this.debug) return null;
+        var output = DEBUG_PREFIX + message;
+        output = output.replace("\n", "\n" + StringUtilties.repeat(ERROR_PREFIX.length(), " "));
+        System.out.println(output);
+        return output;
+    }
     /**
      * Prints out an error message
      * @param message Provides more information

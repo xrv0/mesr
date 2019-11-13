@@ -1,10 +1,12 @@
 package xyz.mesr.backend.conf;
 
 import xyz.mesr.backend.log.Logger;
-
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.Date;
+import java.util.Hashtable;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -12,26 +14,29 @@ import java.util.Properties;
  */
 public class Configuration extends Properties {
     private File file;
-    private String comments;
+    private String description;
+    private Hashtable<String, String> comments;
 
     /**
      * @param file Config file
-     * @param comments Comments string
+     * @param description Describes the use of the config and is appended to the beggining of the configuration file
      */
-    public Configuration(File file, String comments) {
+    public Configuration(File file, String description) {
+        this.file = file;
+        this.description = description;
+        this.comments = new Hashtable<>();
+
         if(!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                Logger.INSTANCE.error("There was an error when creating a config file", e);
+                Logger.INSTANCE.error("There was an error when creating a configuration file", e);
             }
         }
-        this.file = file;
-        this.comments = comments;
         try {
             this.load(new FileInputStream(this.file));
         } catch (IOException e) {
-            Logger.INSTANCE.error("There was an exception while reading configuration file", e);
+            Logger.INSTANCE.error("There was an exception while reading a configuration file", e);
         }
     }
 
@@ -47,6 +52,88 @@ public class Configuration extends Properties {
      */
     public Configuration(String path) {
         this(new File(path));
+    }
+
+    /**
+     * Goes through all fields from object, loads their values and saves them to the configuration file
+     * @param object Object to load the values from
+     */
+    public void saveValues(Object object) {
+        for(Field field : object.getClass().getDeclaredFields()) {
+            if(field.isAnnotationPresent(ConfigurationValue.class)) { // Only access the field when ConfigurationValue annotation is present
+                if(Modifier.isPrivate(field.getModifiers())) field.setAccessible(true); // Make the field accessible
+                if(Modifier.isFinal(field.getModifiers())) continue; // Skip final fields
+
+                ConfigurationValue annotation = field.getAnnotation(ConfigurationValue.class);
+                var key = annotation.name();
+                try {
+                    setProperty(key, field.get(object).toString());
+                    if(!annotation.description().equals("[unassigned]")) {
+                        comments.put(key, annotation.description());
+                    }
+                } catch (IllegalAccessException e) {
+                    Logger.INSTANCE.error("Weird this should not happen :/\n" +
+                            "There was an error when accessing a field while loading from configuration Field: " + field.getName(), e);                }
+            }
+        }
+
+        try {
+            storeToFile();
+        } catch (IOException e) {
+            Logger.INSTANCE.error("An error occurred while storing a configuration file", e);
+        }
+    }
+
+    /**
+     * Saves all keys, values and comments to file
+     * @throws IOException
+     */
+    private void storeToFile() throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(this.file));
+        if (this.description != null) {
+            writer.write("# " + (this.description.replace("\n", "\n# "))); // Write comments to file
+            writer.newLine();
+        }
+        writer.write("#" + (new Date()).toString());
+        writer.newLine();
+        synchronized(this) {
+            for(Map.Entry<Object, Object> e : this.entrySet()) {
+                String key = (String)e.getKey();
+                String val = (String)e.getValue();
+                if(comments.contains(key)) {
+                    writer.write("#n " + (this.comments.get(key).replace("\n", "\n# ")));
+                    writer.newLine();
+                }
+                writer.write(key + "=" + val);
+                writer.newLine();
+            }
+        }
+        writer.flush();
+    }
+
+    /**
+     * Goes through all fields from objects and sets their values from the configuration
+     * @param object Object to set the values to
+     */
+    public void setObjectValues(Object object) {
+        for(Field field : object.getClass().getDeclaredFields()) {
+            if(field.isAnnotationPresent(ConfigurationValue.class)) { // Only access the field when ConfigurationValue annotation is present
+                ConfigurationValue annotation = field.getAnnotation(ConfigurationValue.class);
+                if(Modifier.isPrivate(field.getModifiers())) field.setAccessible(true); // Make the field accessible
+                if(Modifier.isFinal(field.getModifiers())) continue; // Skip final fields
+                var key = annotation.name();
+                if(containsKey(key)) {
+                    Object value = getObject(key, field.getType());
+                    if(value != null) {
+                        try {
+                            field.set(object, value);
+                        } catch (IllegalAccessException e) {
+                            Logger.INSTANCE.error("There was an error while setting the value of a variable", e);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -124,64 +211,5 @@ public class Configuration extends Properties {
             return getChar(key);
         }
         return null;
-    }
-
-    /**
-     * Goes through all fields from object, loads their values and saves them to the configuration file
-     * @param object Object to load the values from
-     */
-    public void saveValues(Object object) {
-        for(Field field : object.getClass().getDeclaredFields()) {
-            if(field.isAnnotationPresent(ConfigurationValue.class)) { // Only access the field when ConfigurationValue annotation is present
-                if(Modifier.isPrivate(field.getModifiers())) field.setAccessible(true); // Make the field accessible
-                if(Modifier.isFinal(field.getModifiers())) { //Remove final operator if exists
-                    try {
-                        field.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                }
-                ConfigurationValue annotation = field.getAnnotation(ConfigurationValue.class);
-                var name = annotation.name();
-                try {
-                    setProperty(name, field.get(object).toString());
-                } catch (IllegalAccessException e) {
-                    Logger.INSTANCE.error("Weird this should not happen :/\n" +
-                            "There was an error when accessing a field while loading from configuration Field: " + field.getName(), e);                }
-            }
-        }
-        
-        try {
-            store(new FileOutputStream(this.file), null);
-        } catch (FileNotFoundException e) {
-            Logger.INSTANCE.error("Configuration file not found ", e);
-        } catch (IOException e) {
-            Logger.INSTANCE.error("There occurred an error while storing a configuration file", e);
-        }
-    }
-
-    /**
-     * Goes through all fields from objects and sets their values from the configuration
-     * @param object Object to set the values to
-     */
-    public void loadValues(Object object) {
-        for(Field field : object.getClass().getDeclaredFields()) {
-            if(field.isAnnotationPresent(ConfigurationValue.class)) { // Only access the field when ConfigurationValue annotation is present
-                ConfigurationValue annotation = field.getAnnotation(ConfigurationValue.class);
-                if(Modifier.isPrivate(field.getModifiers())) field.setAccessible(true); // Make the field accessible
-
-                var key = annotation.name();
-                if(containsKey(key)) {
-                    Object value = getObject(key, field.getType());
-                    if(value != null) {
-                        try {
-                            field.set(object, value);
-                        } catch (IllegalAccessException e) {
-                            Logger.INSTANCE.error("There was an error while setting the value of a variable", e);
-                        }
-                    }
-                }
-            }
-        }
     }
 }
