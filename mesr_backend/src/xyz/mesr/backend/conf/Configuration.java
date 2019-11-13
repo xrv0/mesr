@@ -67,7 +67,7 @@ public class Configuration extends Properties {
                 ConfigurationValue annotation = field.getAnnotation(ConfigurationValue.class);
                 var key = annotation.name();
                 try {
-                    setProperty(key, field.get(object).toString());
+                    this.setProperty(key, field.get(object).toString());
                     if(!annotation.description().equals("[unassigned]")) {
                         comments.put(key, annotation.description());
                     }
@@ -78,7 +78,7 @@ public class Configuration extends Properties {
         }
 
         try {
-            storeToFile();
+            this.storeToFile();
         } catch (IOException e) {
             Logger.INSTANCE.error("An error occurred while storing a configuration file", e);
         }
@@ -94,14 +94,14 @@ public class Configuration extends Properties {
             writer.write("# " + (this.description.replace("\n", "\n# "))); // Write comments to file
             writer.newLine();
         }
-        writer.write("#" + (new Date()).toString());
+        writer.write("# Last edited: " + (new Date()).toString());
         writer.newLine();
         synchronized(this) {
             for(Map.Entry<Object, Object> e : this.entrySet()) {
                 String key = (String)e.getKey();
                 String val = (String)e.getValue();
-                if(comments.contains(key)) {
-                    writer.write("#n " + (this.comments.get(key).replace("\n", "\n# ")));
+                if(comments.containsKey(key)) {
+                    writer.write("# " + (this.comments.get(key).replace("\n", "\n# ")));
                     writer.newLine();
                 }
                 writer.write(key + "=" + val);

@@ -1,2 +1,0 @@
-- [ ] Implement Secure Remote Password protocol
-- [ ] Add HaveIBeenPwned password checker

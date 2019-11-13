@@ -6,8 +6,6 @@ import io.netty.handler.logging.LoggingHandler;
 import xyz.mesr.backend.log.Logger;
 
 public class PacketLoggingHandler extends LoggingHandler {
-
-
     public PacketLoggingHandler(){
         super(LogLevel.INFO);
     }

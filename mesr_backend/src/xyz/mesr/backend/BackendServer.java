@@ -10,6 +10,8 @@ import xyz.mesr.backend.log.Logger;
 import xyz.mesr.backend.packet.PacketChannelInitializer;
 import xyz.mesr.backend.packet.logging.PacketLoggingHandler;
 import xyz.mesr.backend.user.User;
+
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +26,7 @@ public class BackendServer extends Thread{
     private int port = 4455;
     @ConfigurationValue(name = "server.name", description = "This name is not necessarily unique and showed to users in the server list")
     private String name = "mesr standard messaging server";
-    @ConfigurationValue(name = "max_users")
+    @ConfigurationValue(name = "max_users", description = "Maximal amount of concurrent users")
     private int maxUsers;
 
     public BackendServer() {
@@ -38,8 +40,6 @@ public class BackendServer extends Thread{
      */
     @Override
     public void run() {
-        System.out.println(this.port);
-
         this.serverBootstrap = new ServerBootstrap();
         Logger.INSTANCE.information("Started Backend server! Thread: {" + this.getName() + "}");
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
