@@ -32,3 +32,7 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2019 [xrv0 and Godlycrusader](https://github.com/xrv0).<br />
 This project is [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.de.html) licensed.
+
+##⚠️ Important
+
+This project is still under heavy development and should not be used in a production enviroment
