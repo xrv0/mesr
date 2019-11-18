@@ -12,13 +12,13 @@
 > An open source decentralized end-to-end encrypted instant messenger
 
 ## Basic Concept
-<img src=„https://github.com/xrv0/mesr/blob/master/network.jpg“></img>
+<img src=„https://raw.githubusercontent.com/xrv0/mesr/master/network.jpg“></img>
 
 ### 🏠 [Homepage](mesr.tech)
 
 ## Author
 
-👤 **xrv0 and Godlycrusader**
+👤 **xrv0 and Godlycrusader*o*
 
 * Twitter: [@xrvzero](https://twitter.com/xrvzero)
 * Github: [@xrv0](https://github.com/xrv0)
