@@ -12,7 +12,7 @@
 > An open source decentralized end-to-end encrypted instant messenger
 
 ## Basic Concept
-<img src=„https://raw.githubusercontent.com/xrv0/mesr/master/network.jpg“></img>
+<img src=network.jpg></img>
 
 ### 🏠 [Homepage](mesr.tech)
 
