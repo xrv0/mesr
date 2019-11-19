@@ -9,12 +9,10 @@
   </a>
 </p>
 
-> An open source decentralized end-to-end encrypted instant messenger
+> An open source decentralized anonymous end-to-end encrypted instant messenger
 
 ## Basic Concept
 <img src=network.jpg></img>
-
-### 🏠 [Homepage](mesr.tech)
 
 ## Author
 
