@@ -9,13 +9,17 @@
   </a>
 </p>
 
-> An open source decentralized end-to-end encrypted instant messenger
+> An open source decentralized anonymous end-to-end encrypted instant messenger
 
-### 🏠 [Homepage](mesr.tech)
+## Basic Concept
+<img src=network.jpg></img>
 
+When Alice wants to send a message to Bob the message is first encrypted with PubK^B, PubK^AMessagingServer, PubK^ARelay1 and then with PubK^ARelay0.
+It is then send to ARelay0 which decrypts it with PrvK^ARelay0 and sends it to the ARelay1. ARelay1 then decrypts it with PrvK^ARelay1 and relays it to AMessagingServer.
+AMessagingServer saves it in his SQL databank and forwards 
 ## Author
 
-👤 **xrv0 and Godlycrusader**
+👤 **xrv0 and Godlycrusader*o*
 
 * Twitter: [@xrvzero](https://twitter.com/xrvzero)
 * Github: [@xrv0](https://github.com/xrv0)
@@ -32,3 +36,7 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2019 [xrv0 and Godlycrusader](https://github.com/xrv0).<br />
 This project is [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.de.html) licensed.
+
+## ⚠️ Important
+
+This project is still under heavy development and should not be used in a production enviroment

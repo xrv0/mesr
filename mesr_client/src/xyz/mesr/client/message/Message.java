@@ -1,7 +1,6 @@
 package xyz.mesr.client.message;
 
-import jdk.jshell.spi.ExecutionControl;
-
+import xyz.mesr.client.log.Logger;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.Base64;
@@ -32,15 +31,16 @@ public class Message {
     /*
      * Decrypt the message given the private key
      */
-    public String getDecrypt(PrivateKey privateKey) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Decryption method still needs to be implemented!");
+    public void getDecrypt(PrivateKey privateKey) {
+        Logger.INSTANCE.error("Encryption not yet implemented");
     }
 
     /*
      * Decrypt the signed hash using their public key
      * and compares the decrypted message sha1 hash with the decrypted signed hash
      */
-    public boolean checkSignature(PublicKey senderPublicKey) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Signature check still needs to be implemented!");
+    public boolean checkSignature(PublicKey senderPublicKey) {
+        Logger.INSTANCE.error("Encryption not yet implemented");
+        return false;
     }
 }

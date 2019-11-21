@@ -1,7 +1,6 @@
 package xyz.mesr.client.user;
 
-import jdk.jshell.spi.ExecutionControl;
-
+import xyz.mesr.client.log.Logger;
 import java.net.URL;
 import java.security.PublicKey;
 
@@ -27,8 +26,8 @@ public class ChatUser {
      * Returns the name of the given user
      * Sends an request to the server when needed and updates the temporary variable
      */
-    public String getName() throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Sql not yet implemented");
+    public String getName() {
+        return Logger.INSTANCE.error("SQL not yet implemented");
     }
 
     //TODO: Add sql functionality
@@ -36,7 +35,8 @@ public class ChatUser {
      * Returns url to jpg image of given users profile image
      * Sends to the server when needed and updates the temporary variable
      */
-    public URL getProfileImage() throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Sql not yet implemented");
+    public URL getProfileImage() {
+        Logger.INSTANCE.error("SQL not yet implemented");
+        return null;
     }
 }

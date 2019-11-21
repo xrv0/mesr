@@ -1,5 +1,6 @@
 package xyz.mesr.backend.log;
 
+import xyz.mesr.utilties.StringUtilties;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,27 +14,64 @@ public class Logger {
     /**
      * Default Logger instance
      */
-    public static final Logger INSTANCE = new Logger();
+    public static final Logger INSTANCE = new Logger(true);
 
     private static final String WARNING_PREFIX = "[Warning] ";
     private static final String ERROR_PREFIX = "[Warning] ";
     private static final String INFORMATION_PREFIX = "[Warning] ";
+    private static final String DEBUG_PREFIX = "[Debug] ";
 
+    private final boolean debug; // Should debug messages be printed
     private ArrayList<String> messages;
 
-    public Logger() {
+    /**
+     * @param debug When set to TRUE debug messages are printed to the console
+     */
+    public Logger(boolean debug) {
         this.messages = new ArrayList<>();
+        this.debug = debug;
+    }
+
+    public Logger() {
+        this(false);
     }
 
     /**
-     * Prints out a error message
+     * Prints out an optional debug message IF debug mode is enabled
+     * @param message Provides more information
+     * @return the printed message
+     */
+    public String debug(String message) {
+        if(!this.debug) return null;
+        var output = DEBUG_PREFIX + message;
+        output = output.replace("\n", "\n" + StringUtilties.repeat(ERROR_PREFIX.length(), " "));
+        System.out.println(output);
+        return output;
+    }
+    /**
+     * Prints out an error message
      * @param message Provides more information
      * @return the printed message
      */
     public String error(String message) {
-        var output = LocalDateTime.now().toString() + " : " + ERROR_PREFIX + message;
-        System.err.println(ERROR_PREFIX + message);
-        this.messages.add(output);
+        var output = ERROR_PREFIX + message;
+        output = output.replace("\n", "\n" + StringUtilties.repeat(ERROR_PREFIX.length(), " "));
+        System.err.println(output);
+        this.messages.add(LocalDateTime.now().toString() + " : " + output);
+        return output;
+    }
+
+    /**
+     * Prints out an error message and provides more information on the stacktrace
+     * @param message Provides more information
+     * @param exception Caught exception
+     * @return the printed message
+     */
+    public String error(String message, Exception exception) {
+        var output = ERROR_PREFIX + message + "\nMore infos on the printed stacktrace: " + exception.getMessage();
+        output = output.replace("\n", "\n" + StringUtilties.repeat(ERROR_PREFIX.length(), " "));
+        System.err.println(output);
+        this.messages.add(LocalDateTime.now().toString() + " : " + output);
         return output;
     }
 
@@ -43,9 +81,10 @@ public class Logger {
      * @return the printed message
      */
     public String information(String message) {
-        var output = LocalDateTime.now().toString() + " : " + INFORMATION_PREFIX + message;
-        this.messages.add(output);
-        System.err.println("[Error] " + message);
+        var output = INFORMATION_PREFIX + message;
+        output = output.replace("\n", "\n" + StringUtilties.repeat(INFORMATION_PREFIX.length(), " "));
+        System.out.println(output);
+        this.messages.add(LocalDateTime.now().toString() + " : " + output);
         return output;
     }
 
@@ -55,9 +94,9 @@ public class Logger {
      * @return the printed message
      */
     public String warning(String message) {
-        var output = LocalDateTime.now().toString() + " : " + WARNING_PREFIX + message;
-        this.messages.add(output);
-        System.err.println(WARNING_PREFIX + message);
+        var output = WARNING_PREFIX + message;
+        System.out.println(output);
+        this.messages.add(LocalDateTime.now().toString() + " : " + output);
         return output;
     }
 
@@ -77,5 +116,13 @@ public class Logger {
             this.error("There was an error while saving the log to file! [" + e.getMessage() + "]");
             return false;
         }
+    }
+
+    /**
+     * Getter for messages
+     * @return all temporary stored messages
+     */
+    public ArrayList<String> getMessages() {
+        return messages;
     }
 }
