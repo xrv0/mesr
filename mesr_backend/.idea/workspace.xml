@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81c94407-90c9-4ada-94ad-656c3d6eaa56" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/packet/PacketChannelInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/packet/PacketHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/packet/logging/PacketLoggingHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mesr_client/src/xyz/mesr/client/packet/PacketChannelConnector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mesr_client/src/xyz/mesr/client/packet/PacketHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mesr_client/src/xyz/mesr/client/packet/PacketSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mesr_backend.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xyz/mesr/backend/BackendServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/BackendServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xyz/mesr/backend/conf/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/conf/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/xyz/mesr/backend/user/Password.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/xyz/mesr/backend/user/Password.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesr_client/mesr_client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../mesr_client/mesr_client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesr_client/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mesr_client/src/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +19,9 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
@@ -57,6 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1573324413579</updated>
       <workItem from="1573324414812" duration="11000" />
+      <workItem from="1574276403955" duration="40000" />
     </task>
     <servers />
   </component>
@@ -68,7 +59,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
