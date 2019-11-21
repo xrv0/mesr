@@ -11,12 +11,21 @@
 
 > An open source decentralized anonymous end-to-end encrypted instant messenger
 
-## Basic Concept
+## Basic Networking Concept
 <img src=network.jpg></img>
 
-When Alice wants to send a message to Bob the message is first encrypted with PubK^B, PubK^AMessagingServer, PubK^ARelay1 and then with PubK^ARelay0.
-It is then send to ARelay0 which decrypts it with PrvK^ARelay0 and sends it to the ARelay1. ARelay1 then decrypts it with PrvK^ARelay1 and relays it to AMessagingServer.
-AMessagingServer saves it in his SQL databank and forwards 
+## Password Encryption
+<img src="password.jpg"></img>
+
+### Signup:
+The password choosen by the user is hashed with bcrypt on clientside and then sent to the server.
+The server then hashes the password again and stores it in their databank
+
+### Login
+
+The password is hashed on clientside and sent to the server.
+The server then compares the bcrypt hash of the received string with the one stored in the databank
+
 ## Author
 
 👤 **xrv0 and Godlycrusader*o*
