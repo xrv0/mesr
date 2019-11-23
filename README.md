@@ -32,6 +32,8 @@ The server then compares the bcrypt hash of the received string with the one sto
 
 * Twitter: [@xrvzero](https://twitter.com/xrvzero)
 * Github: [@xrv0](https://github.com/xrv0)
+* Twitter: [@Godlycrusader](https://twitter.com/master9814)
+* Github: [@Godlycrusader](https://github.com/Godlycrusader)
 
 ## 🤝 Contributing
 
