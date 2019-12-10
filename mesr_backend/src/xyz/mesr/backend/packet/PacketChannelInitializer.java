@@ -11,6 +11,10 @@ public class PacketChannelInitializer extends ChannelInitializer<SocketChannel> 
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         ChannelPipeline pipeLine = socketChannel.pipeline();
+
+        /*
+        Add those StringEncoder and Decoder first and then our own Handler
+         */
         pipeLine.addFirst(new StringEncoder());
         pipeLine.addFirst(new StringDecoder());
         pipeLine.addLast(new PacketHandler());

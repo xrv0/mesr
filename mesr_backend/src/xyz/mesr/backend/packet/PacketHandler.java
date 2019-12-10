@@ -9,9 +9,12 @@ import xyz.mesr.backend.log.Logger;
 public class PacketHandler extends SimpleChannelInboundHandler<String> {
 
 
+    /*
+        Gets called whenever the channel receives a String
+     */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, String s) throws Exception {
-     System.out.println(s);
+        System.out.println(s);
     }
 
     @Override

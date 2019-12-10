@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="org.mindrot:jbcrypt:0.4" level="project" />
     <orderEntry type="library" name="io.netty:netty-all:4.1.43.Final" level="project" />
+    <orderEntry type="library" name="MigLayout" level="project" />
   </component>
 </module>
