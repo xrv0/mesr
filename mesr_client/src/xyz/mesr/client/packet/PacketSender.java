@@ -12,16 +12,12 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class PacketSender extends Thread{
-
     private final int port = 4455;
     private  String host = "127.0.0.1";
     private ChannelFuture lastWriteFuture = null;
     private Channel ch;
     private EventLoopGroup group;
     private  Bootstrap bootstrap;
-    public PacketSender(){
-
-    }
 
     @Override
     public void run() {
@@ -32,7 +28,6 @@ public class PacketSender extends Thread{
                 .channel(NioSocketChannel.class)
                 .handler(new PacketChannelConnector());
 
-
         try {
             ch = bootstrap.connect(host, port).sync().channel();
         } catch (InterruptedException e) {
@@ -41,9 +36,7 @@ public class PacketSender extends Thread{
         }
 
 
-        while(this.isAlive()){
-
-        }
+        while(this.isAlive()){ }
     }
     public void sendMessage(String message){
         lastWriteFuture = ch.writeAndFlush(message);

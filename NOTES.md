@@ -1,0 +1,3 @@
+- users ID is a-zA-Z0-9 (Approx. 2.1834011e+14 different combinations)
+- bcrypt hash is always 60 chars long
+- max:password123

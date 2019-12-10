@@ -1,7 +1,7 @@
 package xyz.mesr.backend.user;
 
-import jdk.jshell.spi.ExecutionControl;
 import org.mindrot.jbcrypt.BCrypt;
+import xyz.mesr.backend.log.Logger;
 
 /**
  * Class for storing a bcrypt encrypted users password
@@ -11,9 +11,8 @@ public class Password {
 
     /**
      * Constructor for creating a password at sign up or password change
-     * @param plainText
+     * @param Password provided by user in plaintext
      */
-
     public Password(String plainText) {
         var salt = BCrypt.gensalt(12); // Generate salt
         this.hash = BCrypt.hashpw(plainText, salt);
@@ -24,17 +23,16 @@ public class Password {
      */
     /**
      * Load a password from database given the users ID
-     * @param id
+     * @param id Users id
      */
-    public Password(byte[] id) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Sql functionility not implemented yet");
+    public Password(byte[] id) {
+        Logger.INSTANCE.error("SQL not yet implemented");
     }
 
     /**
-     * Check if the password hashed matches a given plaintext password
      * bcrypt_hash(input, salt) equals password_hash
-     * @param input
-     * @return
+     * @param input Plaintext password to check
+     * @return If the given password matches the saved hash
      */
     public boolean check(String input) {
         return BCrypt.checkpw(input, hash);

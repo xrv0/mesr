@@ -1,5 +1,19 @@
-
-mesr_backend/.idea/modules.xml
-mesr_backend/.idea/vcs.xml
-mesr_backend/.idea/.DS_Store
+#Specific files to ignore.
+DS_Store
 .DS_Store
+mesr_backend/src/Test.java
+
+# Folders to ignore
+mesr_backend/.idea/
+mesr_client/.idea/
+mesr_backend/.idea/*
+mesr_client/.idea/*
+.idea/
+
+# Files extensions to ignore
+*.ipr
+*.iws
+*.kotlin_module
+*.class
+*.xml
+*.iml
