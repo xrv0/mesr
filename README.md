@@ -24,7 +24,7 @@ The server then hashes the password again and stores it in their databank
 ### Login
 
 The password is hashed on clientside and sent to the server.
-The server then compares the bcrypt hash of the received string with the one stored in the databank
+The server then compares the bcrypt hash of the received string with the one stored in the database
 
 ## Author
 
@@ -32,7 +32,7 @@ The server then compares the bcrypt hash of the received string with the one sto
 
 * Twitter: [@xrvzero](https://twitter.com/xrvzero)
 * Github: [@xrv0](https://github.com/xrv0)
-* Twitter: [@master9814](https://twitter.com/master9814)
+* Twitter: [@GodlyYee](https://twitter.com/GodlyYee)
 * Github: [@Godlycrusader](https://github.com/Godlycrusader)
 
 ## 🤝 Contributing
