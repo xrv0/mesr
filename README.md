@@ -9,7 +9,7 @@
   </a>
 </p>
 
-> An open source decentralized anonymous end-to-end encrypted instant messenger
+> An open source anonymous end-to-end encrypted instant messenger
 
 ## Basic Networking Concept
 <img src=network.jpg></img>
